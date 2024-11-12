@@ -1,6 +1,6 @@
 import os
 import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
+from spotipy.oauth2 import SpotifyOAuth
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -8,8 +8,8 @@ load_dotenv()
 Client_id = os.environ.get("CLIENT_ID")
 Client_secret = os.environ.get("CLIENT_SECRET")
 
-sp = spotipy.Spotipy(
-    auth_manager = SpotipyOAuth(
+sp = spotipy.Spotify(
+    auth_manager = SpotifyOAuth(
         scope = "playlist-modify-private",
         redirect_uri = "https://example.com",
         client_id = Client_id,
