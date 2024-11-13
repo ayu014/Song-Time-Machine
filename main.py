@@ -7,7 +7,6 @@ from spotipy.oauth2 import SpotifyOAuth
 
 load_dotenv()
 
-SEARCH_API_EP = "https://api.spotify.com/v1/search"
 
 
 #----------------------------------------SCRAPING THE SONG DATA--------------------------------------
