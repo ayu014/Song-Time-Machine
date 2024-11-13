@@ -43,10 +43,8 @@ This project allows you to create a Spotify playlist of Billboard Hot 100 songs 
 1. **Run the script**:
     ```bash
     python main.py
-2. **Input the Date**:
- - When prompted, enter the date for the Billboard chart you want to retrieve, in **YYYY-MM-DD** format.
-3. **Playlist Creation**:
-- The script will scrape the Billboard Hot 100 songs for the specified date and add them to a new private playlist in your Spotify account.
+2. **Input the Date**: When prompted, enter the date for the Billboard chart you want to retrieve, in **YYYY-MM-DD** format.
+3. **Playlist Creation**: The script will scrape the Billboard Hot 100 songs for the specified date and add them to a new private playlist in your Spotify account.
 ## Code Overview
 1. **Scraping Billboard Hot 100 Data:**
  The script retrieves the top 100 songs for a specified date from the Billboard website using **requests** and **BeautifulSoup**.
