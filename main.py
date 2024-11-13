@@ -7,10 +7,10 @@ from spotipy.oauth2 import SpotifyOAuth
 
 load_dotenv()
 
+SEARCH_API_EP = "https://api.spotify.com/v1/search"
 
 
-
-#----------------------------------------SCRAPING THE DATA
+#----------------------------------------SCRAPING THE SONG DATA--------------------------------------
 
 date = input("Which year do you want to travel to? Enter the date in YYYY-MM-DD format  ")
 URL = "https://www.billboard.com/charts/hot-100/" + date
@@ -32,7 +32,7 @@ songs_list =[song.getText().strip() for song in all_songs]
 
 
 
-#----------------------------------------------SETUP & AUTHENTICATING THE SPOTIFY WEB API
+#----------------------------------------------SETUP & AUTHENTICATING THE SPOTIFY WEB API------------------------------
 
 
 Client_id = os.environ.get("CLIENT_ID")
@@ -47,10 +47,40 @@ sp = spotipy.Spotify(
         show_dialog = True,
         cache_path = "token.txt",
         username = "31tqpcu5bhyl57zmuj675k6awrvi"
-    )
+    ),
+    requests_timeout = 10
 )
 
 user_id = sp.current_user()["id"]
 # print(user_id)
+
+
+
+
+#-------------------------------------------------------SEARCHING SONG---------------------------------------------
+song_urls = []
+year = date.split("-")[0]
+
+for song in songs_list:
+    result = sp.search(q=f"track:{song} year:{year}", type = "track")
+    # print(result)
+    try:
+        uri = result["tracks"]["items"][0]["uri"]
+        # print(uri)
+        song_urls.append(uri)
+    except IndexError:
+        print(f"{song} does not exist on spotify. Skipped!")
+
+
+#-----------------------------------------------------CREATING THE PLAYLIST----------------------------------------
+playlist = sp.user_playlist_create(user=user_id,name=f"{date} Billboard 100",public=False)
+playlist_id = playlist["id"]
+# print(playlist)
+
+#---------------------------------------------------ADDING SONGS TO THE PLAYLIST---------------------------------------------
+sp.playlist_add_items(playlist_id=playlist_id,items=song_urls)
+
+
+print("Songs added to the playlist.")
 
     
