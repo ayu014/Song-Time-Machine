@@ -64,7 +64,7 @@ If a song is not found on Spotify, the script will skip that song and display a 
     Song XYZ does not exist on Spotify. Skipped!
     Songs added to the playlist.
 ## Troubleshooting
-- **Spotify Authentication Errors:** Make sure you have correctly set up your ".env" file and configured your Spotify Developer application with the correct redirect URI.
+- **Spotify Authentication Errors:** Make sure you have correctly set up your ".env" file and configured your Spotify Developer application with the correct redirect URI(set the redirect URL to **https://example.com**.
 - **Scraping Errors:** If the Billboard website structure changes, the selectors may need to be updated.
 ## Contributing
 Feel free to open issues or submit pull requests for improvements or bug fixes.
