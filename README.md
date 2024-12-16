@@ -28,7 +28,7 @@ This project allows you to create a Spotify playlist of Billboard Hot 100 songs 
    .venv\Scripts\Activate.ps1  # Window
 2. **Install Dependencies**: Use pip to install the required libraries
    ```bash
-   pip install requirements.txt
+   pip install -r requirements.txt
 3. **Spotify App Creditionals**:
    - Go to the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/) and create an application.
    ![Spotify Dashboard](assets/image.png)
